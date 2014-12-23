@@ -89,7 +89,7 @@ public class CommandManager {
      * @param sender
      * @param args
      */
-    public static void commandCall(String permission, ICommandSender sender, List<String> args) {
+    public static void commandCall(String permission, ICommandSender sender, List<String> args) throws CommandException {
         Method m = commandList.get(permission);
         if(m == null) {
             MyTownCore.Instance.log.error("Command with permission node " + permission + " does not exist. Aborting call.");
