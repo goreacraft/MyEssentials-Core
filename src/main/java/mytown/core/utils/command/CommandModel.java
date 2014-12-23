@@ -80,7 +80,9 @@ public class CommandModel extends CmdBase {
 
     @Override
     public boolean canCommandSenderUseCommand(ICommandSender sender)  {
-        Assert.Perm(sender, getPermissionNode(), canConsoleUseCommand(), canRConUseCommand(), canCommandBlockUseCommand());
+        try {
+            Assert.Perm(sender, getPermissionNode(), canConsoleUseCommand(), canRConUseCommand(), canCommandBlockUseCommand());
+        } catch (CommandException e) {e.printStackTrace();}
         if(sender instanceof EntityPlayer && cmd.opsOnlyAccess()) //TODO: Find out the use for - && !MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(((EntityPlayer) sender).getDisplayNameString()).getGameProfile()))
             return false;
 
